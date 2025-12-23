@@ -1,0 +1,10 @@
+name: Event Activity Type
+on: [push, issues, pull_request]
+jobs:
+    event-activity-type:
+        runs-on: ubuntu-latest
+        steps:
+            - run: |
+                echo $GITHUB_REF
+                echo $GITHUB_SHA
+            - uses: actions/checkout@v3
