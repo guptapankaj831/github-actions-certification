@@ -1,7 +1,13 @@
 name: Event Activity Type
-on: [push, issues, pull_request]
+on:
+    push:
+    pull_request:
+        types: [opened, assigned, reopened]
+    issues:
+        types: [opened, closed]
+    
 jobs:
-    event-activity-type:
+    checkout-latest:
         runs-on: ubuntu-latest
         steps:
             - run: |
