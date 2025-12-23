@@ -1,0 +1,22 @@
+name: Parallel and Dependent Job
+on: [push]
+jobs:
+    parallel-1-job:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Echo a string
+              run: echo "Hello world"
+
+    parallel-2-job:
+        runs-on: macos-latest
+        steps:
+            - name: View Software Version
+              run: sw_vers
+
+    dependent-job:
+        needs: parallel-2-job
+        runs-on: windows-latest
+        steps:
+            - name: echo a string
+              run: Write-Output "Windows String"
+            
