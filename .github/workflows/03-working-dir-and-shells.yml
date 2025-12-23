@@ -30,9 +30,9 @@ jobs:
               run: |
                 Get-Location
                 dir
-                echo $GITHUB_SHA
-                echo $GITHUB_REPOSITORY
-                echo $GITHUB_WORKSPACE
+                echo $env:GITHUB_SHA
+                echo $env:GITHUB_REPOSITORY
+                echo $env:GITHUB_WORKSPACE
             
             - name: Python Shell
               shell: python     # Step level shell change
