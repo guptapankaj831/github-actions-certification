@@ -1,0 +1,14 @@
+name: Child Workflow Run
+on:
+    workflow_run:
+        workflows: [Run workflow based on another workflow]
+        types: [completed]
+jobs:
+    child-workflow:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Echo
+              run: |
+                echo $GITHUB_SHA
+                echo $GITHUB_REF
+                echo "I was triggered because 'Run workflow based on another workflow' was completed"
