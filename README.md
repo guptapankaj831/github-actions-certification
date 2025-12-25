@@ -1,0 +1,1 @@
+[![Pass data between jobs](https://github.com/guptapankaj831/github-actions-certification/actions/workflows/pass-data-between-jobs.yml/badge.svg)](https://github.com/guptapankaj831/github-actions-certification/actions/workflows/pass-data-between-jobs.yml)
