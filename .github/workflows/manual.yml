@@ -27,7 +27,7 @@ jobs:
         run: echo $GITHUB_SHA
       - name: Echo input value only when branch is hello
         run: echo 'Echo input param value ${{ github.event.inputs.log-level }}'
-        if: github.ref == 'refs/head/hello'
+        if: github.ref == 'refs/heads/hello'
       - name: Echo tags value only when branch is main
         run: echo 'Echo input tag value ${{ github.event.inputs.tags }}'
-        if: github.ref == 'refs/head/main'
+        if: github.ref == 'refs/heads/main'
