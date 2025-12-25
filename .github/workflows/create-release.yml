@@ -12,8 +12,6 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 20
-      - name: Run Install
-        run: npm install
       - name: Create release
         uses: actions/create-release@v1
         env:
