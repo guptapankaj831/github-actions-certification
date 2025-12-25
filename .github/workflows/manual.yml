@@ -1,0 +1,9 @@
+name: Manual Workflow
+on:
+  workflow_dispatch:
+jobs:
+  manual-workflow:
+    runs-on: ubuntu-latest
+    steps:
+      - name: echo a string
+        run: echo '$GITHUB_SHA'
