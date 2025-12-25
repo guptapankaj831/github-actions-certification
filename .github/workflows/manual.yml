@@ -1,9 +1,16 @@
 name: Manual Workflow
 on:
   workflow_dispatch:
+    inputs:
+      param1:
+        required: true
+        description: 'Enter Param1'
+        default: 'Hello world'  
 jobs:
   manual-workflow:
     runs-on: ubuntu-latest
     steps:
-      - name: echo a string
-        run: echo '$GITHUB_SHA'
+      - name: Echo a string
+        run: echo $GITHUB_SHA
+      - name: Echo input value
+        run: echo 'Echo input param value ${{ github.event.inputs.param1 }}'
