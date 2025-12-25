@@ -1,0 +1,24 @@
+name: Pass data between jobs
+on: [push]
+jobs:
+  job1:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Write data to a file
+        run: echo 'This is test data' > data.txt
+      - name: Upload artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: data-artifact
+          path: data.txt
+  jobs2:
+    needs: job1
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download artifact
+        uses: actions/download-artifact@v2
+        with:
+          name: data-artifact
+          path: data
+      - name: Print Downloaded artifact
+        run: cat data/data.txt
