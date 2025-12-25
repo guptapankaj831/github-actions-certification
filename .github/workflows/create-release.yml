@@ -15,7 +15,7 @@ jobs:
       - name: Run Install
         run: npm install
       - name: Create release
-        uses: actions/create-release@v2
+        uses: actions/create-release@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
