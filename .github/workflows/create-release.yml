@@ -1,0 +1,23 @@
+name: Create release number
+on: [push]
+jobs:
+  create-release-number:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: checkout code
+        uses: actions/checkout@v4
+      - name: setup node js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Run Install
+        run: npm install
+      - name: Create release
+        uses: actions/create-release@v4
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: v${{ github.run_number }}
+          release_name: Release v$GITHUB_RUN_NUMBER
