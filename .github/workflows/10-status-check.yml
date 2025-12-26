@@ -1,0 +1,26 @@
+name: Status Check Function
+on: [push]
+jobs:
+  job-1:
+    runs-on: ubuntu
+    steps:
+      - name: Step 1
+        run: sleep 20
+      - name: Runs on Failure
+        if: failure()
+        run: echo 'Runs on Failure step executed'
+      - name: Runs on Success
+        if: success()
+        run: echo 'Run on Success'
+      - name: Always Run
+        if: always()
+        run: echo 'Always Run Step'
+      - name: Runs on Cancel
+        if: cancelled()
+        run: 'Runs on Cancelled'
+  job-2:
+    runs-on: ubuntu
+    needs: job-1
+    if: failure()
+    steps:
+      - run: echo 'Job2 executed'
