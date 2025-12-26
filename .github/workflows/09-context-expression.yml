@@ -4,7 +4,6 @@ run-name: "Context and Expression by @${{ github.actor }}, event: ${{ github.eve
 jobs:
   using-context-and-expressions:
     runs-on: ubuntu-latest
-    if: github.event_name == 'push'
     steps:
       - name: Expression
         run: |
@@ -16,6 +15,7 @@ jobs:
           echo ${{ 'string' == 'String' }}
           echo ${{ true && false }}
           echo ${{ true || (false && true) }}
+        if: github.event_name == 'pull_request'
       - name: Dumps Context
         run: |
           echo '${{ toJson(github) }}'
@@ -23,7 +23,4 @@ jobs:
           echo '${{ toJson(secrets) }}'
           echo '${{ toJson(steps) }}'
           echo '${{ toJson(runner) }}'
-    if: github.event_name == 'pull_request'
-    steps:
-      - name: Echo
-        run: echo 'Hello'
+        if: github.event_name == 'push'
