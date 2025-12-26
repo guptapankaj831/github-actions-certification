@@ -1,0 +1,23 @@
+name: Context and Expression
+on: [push]
+jobs:
+  using-context-and-expressions:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Expression
+        run: |
+          echo ${{ 1 }}
+          echo ${{ 'This is string' }}
+          echo ${{ null }}
+          echo ${{ true }}
+          echo ${{ 1 > 2 }}
+          echo ${{ 'string' == 'String' }}
+          echo ${{ true && false }}
+          echo ${{ true || (false && true) }}
+      - name: Dumps Context
+        run: |
+          echo '${{ toJson(github) }}'
+          echo '${{ toJson(job) }}'
+          echo '${{ toJson(secrets) }}'
+          echo '${{ toJson(steps) }}'
+          echo '${{ toJson(runner) }}'
